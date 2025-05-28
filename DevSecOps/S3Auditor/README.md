@@ -117,7 +117,7 @@ export AWS_SECRET_ACCESS_KEY=abc123...
 ## 🧠 Run the Agent
 
 ```bash
-python devopsAgent.py
+python app.py
 ```
 
 You’ll see:
@@ -153,7 +153,7 @@ Both are saved in the current directory.
 
 ```
 s3-audit-agent/
-├── devopsAgent.py
+├── app.py
 ├── templates/
 │   └── s3_report.html
 ├── .env (optional)
