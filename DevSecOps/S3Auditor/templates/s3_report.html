@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>S3 Security Audit Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        h1 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .fail { color: red; }
+        .pass { color: green; }
+    </style>
+</head>
+<body>
+    <h1>S3 Bucket Security Audit Report</h1>
+    <p><strong>Total Buckets Audited:</strong> {{ buckets|length }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Bucket Name</th>
+                <th>Region</th>
+                <th>Public?</th>
+                <th>Encrypted?</th>
+                <th>Versioning?</th>
+                <th>Lifecycle Policy?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in buckets %}
+            <tr>
+                <td>{{ b.bucket_name }}</td>
+                <td>{{ b.region }}</td>
+                <td class="{{ 'fail' if b.is_public else 'pass' }}">{{ 'Yes' if b.is_public else 'No' }}</td>
+                <td class="{{ 'pass' if b.is_encrypted else 'fail' }}">{{ 'Yes' if b.is_encrypted else 'No' }}</td>
+                <td class="{{ 'pass' if b.versioning_enabled else 'fail' }}">{{ 'Yes' if b.versioning_enabled else 'No' }}</td>
+                <td class="{{ 'pass' if b.has_lifecycle_policy else 'fail' }}">{{ 'Yes' if b.has_lifecycle_policy else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
