@@ -192,7 +192,7 @@ s3-audit-agent/
 
 ## 👨‍💻 Author
 
-**Prashant Kumar Dey**  
+**Dr. Prashant Kumar Dey**  
 Cloud | AI | Cybersecurity  
 📬 [LinkedIn](https://www.linkedin.com/in/prashantkumardey)
 
